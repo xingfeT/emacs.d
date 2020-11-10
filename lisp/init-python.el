@@ -16,6 +16,25 @@
 (setq python-shell-interpreter "python3")
 
 (require-package 'pip-requirements)
+(require-package 'elpy)
+(require-package 'pyenv-mode)
+(pyenv-mode)
+(elpy-enable)
+
+;; (use-package elpy
+;;              :config
+;;              (package-initialize)
+;;              (elpy-enable)
+;;              (setenv "WORKON_HOME"  "~/.pyenv/versions")
+;;              )
+
+
+(defun ssbb-pyenv-hook ()
+  )
+(add-hook 'find-file-hook 'ssbb-pyenv-hook)
+(add-hook 'before-save-hook 'whilespace-cleanup)
+
+
 
 (when (maybe-require-package 'anaconda-mode)
   (with-eval-after-load 'python
